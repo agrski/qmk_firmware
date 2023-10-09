@@ -19,9 +19,12 @@
 enum layer_names {
     _BASE,
     _NUM,
+    _I3,
     _SYM,
     _NAV,
-    _FUN,
+    _MOUSE,
+    _FUNL,
+    _FUNR,
     _KITTY,
 };
 
