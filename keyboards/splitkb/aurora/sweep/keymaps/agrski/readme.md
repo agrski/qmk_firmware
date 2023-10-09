@@ -12,24 +12,34 @@ It makes the _super_ modifier always available for use with i3wm or equivalent w
 Layer map
 ---
 
-The thumb buttons are the same in all layers for consistency and access to modifiers.
+The thumb buttons are similar in all layers for consistent access to modifiers.
 This keymap is not designed around one-handed use.
 
-### Layer 0: typing
+### Base layer: typing
 
-This base layer is intended for a convenient typing experience which provides alphabetic characters, whitespace, and common punctuation in an accessible manner.
+This base layer is intended for a convenient typing experience which provides alphabetic characters and whitespace in an accessible manner.
 
-### Layer 1: numbers & symbols
+### Numeric layer
 
-It is common to need access to numbers and symbols, whether for general typing, regular expressions, window manager commands, or suchlike.
-As such, having access to modifier keys and these characters on a single layer is beneficial.
+Numbers are accessed via the left ring finger.
+It is common to need access to numbers, whether for general typing, calculations, window manager commands, or suchlike.
 
-### Layer 2: navigation
+### Symbol layer
+
+Symbols are accessed via the right ring finger.
+These are intended for use in general typing, Vim, and shell scripting.
+
+### Navigation
 
 QMK supports mouse emulation.
 This layer makes use of that and other navigation tools, such as arrow keys.
 
-### Layer 3: function keys
+### Function keys
 
 The assumption is that function keys, whilst useful, are used infrequently and thus can be relegated to a less accessible layer.
 This layer also controls the RGB LEDs, if available.
+
+### KiTTY terminal
+
+Kitty commands are often invoked with Control + Shift.
+This is slightly awkward, so there is a special layer for them.
