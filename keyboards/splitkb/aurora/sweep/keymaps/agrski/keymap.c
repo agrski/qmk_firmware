@@ -31,7 +31,7 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,                       KC_H,           KC_L,               KC_U,               KC_Y,           KC_Z,
-        KC_A,           LT(_NUM, KC_R), KC_S,           KC_T,           KC_D,                       KC_J,           KC_N,               LT(_KITTY, KC_E),   LT(_SYM, KC_I), KC_O,
+        KC_A,           LT(_NUM, KC_R), LT(_I3, KC_S),  KC_T,           KC_D,                       KC_J,           KC_N,               LT(_KITTY, KC_E),   LT(_SYM, KC_I), KC_O,
         TG(_NAV),       KC_X,           KC_C,           KC_V,           KC_TAB,                     KC_DEL,         KC_M,               KC_K,               KC_B,           TG(_FUN),
                                                         CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),  ALT_T(KC_ESC)
     ),
@@ -41,6 +41,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        _______,        KC_MINS,        KC_EQL,         XXXXXXX,                    XXXXXXX,            KC_1,           KC_2,               KC_3,           KC_PERC,
         XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_GRAVE,       XXXXXXX,                    XXXXXXX,            KC_4,           KC_5,               KC_6,           XXXXXXX,
                                                         CMD_T(KC_COMM), SFT_T(KC_DOT),              CTL_T(KC_QUOTE),    ALT_T(KC_0)
+    ),
+
+    [_I3] = LAYOUT(
+        XXXXXXX,        G(KC_UP),       XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_7),        G(KC_8),            G(KC_9),        XXXXXXX,
+        XXXXXXX,        G(KC_LEFT),     _______,        G(KC_RIGHT),    XXXXXXX,                    XXXXXXX,            G(KC_1),        G(KC_2),            G(KC_3),        KC_PERC,
+        XXXXXXX,        G(KC_DOWN),     XXXXXXX,        G(KC_GRAVE),    XXXXXXX,                    XXXXXXX,            G(KC_4),        G(KC_5),            G(KC_6),        XXXXXXX,
+                                                        XXXXXXX,        KC_LSFT,                    G(KC_D),            G(KC_0)
     ),
 
     [_SYM] = LAYOUT(
