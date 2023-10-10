@@ -12,3 +12,5 @@ OLED_ENABLE             = no
 AUTO_SHIFT_ENABLE       = no
 AUTO_SHIFT_MODIFIERS    = no
 UNICODE_ENABLE          = no
+
+DYNAMIC_TAPPING_TERM_ENABLE = yes
