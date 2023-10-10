@@ -33,8 +33,7 @@
 
 // Not yet available in `keymap.json` format
 #ifdef MOUSEKEY_ENABLE
-     // The default is 100
-#    define MOUSEKEY_WHEEL_INTERVAL 50
-     // The default is 40
-#    define MOUSEKEY_WHEEL_TIME_TO_MAX 100
+    #define MK_KINETIC_SPEED
+    #define MOUSEKEY_BASE_SPEED 2000
+    #define MOUSEKEY_WHEEL_INITIAL_MOVEMENTS 8
 #endif
