@@ -31,7 +31,7 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,                       KC_H,           KC_L,               KC_U,               KC_Y,           KC_Z,
-        KC_A,           LT(_NUM, KC_R), LT(_I3, KC_S),  KC_T,           KC_D,                       KC_J,           KC_N,               LT(_KITTY, KC_E),   LT(_SYM, KC_I), KC_O,
+        KC_A,           LT(_NUM, KC_R), LT(_I3, KC_S),  LT(_MSE, KC_T), KC_D,                       KC_J,           KC_N,               LT(_KITTY, KC_E),   LT(_SYM, KC_I), KC_O,
         TG(_NAV),       KC_X,           KC_C,           KC_V,           KC_TAB,                     KC_DEL,         KC_M,               KC_K,               KC_B,           TG(_FUN),
                                                         CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),  ALT_T(KC_ESC)
     ),
@@ -62,6 +62,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,         KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_WBAK,                    KC_WFWD,            KC_MS_L,        KC_MS_D,            KC_MS_R,        KC_ESC,
         _______,        KC_END,         KC_PGDN,        KC_PGUP,        KC_HOME,                    KC_WH_L,            KC_WH_U,        KC_WH_D,            KC_WH_R,        _______,
                                                         KC_LCMD,        KC_LSFT,                    KC_LCTL,            KC_LALT
+    ),
+
+    [_MSE] = LAYOUT(
+        XXXXXXX,        KC_WFWD,        KC_WBAK,        XXXXXXX,            XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        KC_WH_U,        KC_WH_D,        _______,            XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
+        XXXXXXX,        KC_WH_L,        KC_WH_R,        XXXXXXX,            KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
+                                                        CMD_T(KC_MS_BTN2),  SFT_T(KC_MS_BTN1),          CTL_T(KC_MS_BTN1),  ALT_T(KC_MS_BTN2)
     ),
 
     [_FUN] = LAYOUT(
