@@ -17,15 +17,15 @@
 #include QMK_KEYBOARD_H
 
 enum layer_names {
-    _BASE,
-    _NUM,
-    _I3,
-    _SYM,
-    _NAV,
-    _MSE,
-    _FUNL,
-    _FUNR,
-    _KITTY,
+    _BASE,  // Alphabetic
+    _NUM,   // Numeric
+    _I3,    // i3wm
+    _SYM,   // Symbolic
+    _NAV,   // Navigation
+    _MSE,   // Mouse
+    _FUNL,  // Functions, left hand
+    _FUNR,  // Functions, right hand
+    _KITTY, // KiTTY terminal
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
