@@ -31,8 +31,8 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,                       KC_H,           KC_L,               KC_U,               KC_Y,           KC_Z,
-        KC_A,           LT(_NUM, KC_R), LT(_I3, KC_S),  LT(_MSE, KC_T), KC_D,                       KC_J,           LT(_NAV, KC_N),     LT(_KITTY, KC_E),   LT(_SYM, KC_I), KC_O,
-        TG(_NAV),       KC_X,           KC_C,           KC_V,           KC_TAB,                     KC_DEL,         KC_M,               KC_K,               KC_B,           TG(_FUN),
+        LT(_FUNL, KC_A),LT(_NUM, KC_R), LT(_I3, KC_S),  LT(_MSE, KC_T), KC_D,                       KC_J,           LT(_NAV, KC_N),     LT(_KITTY, KC_E),   LT(_SYM, KC_I), LT(_FUNR, KC_O),
+        XXXXXXX,        KC_X,           KC_C,           KC_V,           KC_TAB,                     KC_DEL,         KC_M,               KC_K,               KC_B,           XXXXXXX,
                                                         CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),  ALT_T(KC_ESC)
     ),
 
@@ -78,10 +78,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_LCMD,        KC_LSFT,                    KC_LCTL,            KC_LALT
     ),
 
-    [_FUN] = LAYOUT(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            BL_UP,          BL_TOGG,            BL_DOWN,        XXXXXXX,
-        XXXXXXX,        KC_F1,          KC_F2,          KC_F3,          XXXXXXX,                    XXXXXXX,            KC_F7,          KC_F8,              KC_F9,          XXXXXXX,
-        _______,        KC_F4,          KC_F5,          KC_F6,          XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         _______,
+    [_FUNL] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        _______,        KC_F1,          KC_F2,          KC_F3,          XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        KC_F4,          KC_F5,          KC_F6,          XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        _______,
+                                                        KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
+    ),
+
+    [_FUNR] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        BL_DOWN,        BL_TOGG,        BL_UP,          XXXXXXX,                    XXXXXXX,            KC_F7,          KC_F8,              KC_F9,          _______,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         XXXXXXX,
                                                         KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
     ),
 };
