@@ -22,7 +22,7 @@ enum layer_names {
     _I3,
     _SYM,
     _NAV,
-    _MOUSE,
+    _MSE,
     _FUNL,
     _FUNR,
     _KITTY,
