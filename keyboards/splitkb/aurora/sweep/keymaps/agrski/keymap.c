@@ -50,11 +50,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         XXXXXXX,        KC_LSFT,                    G(KC_D),            G(KC_0)
     ),
 
+    [_MSE] = LAYOUT(
+        XXXXXXX,        KC_WFWD,        KC_WBAK,        XXXXXXX,            XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        KC_WH_U,        KC_WH_D,        _______,            XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
+        XXXXXXX,        KC_WH_L,        KC_WH_R,        XXXXXXX,            KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
+                                                        CMD_T(KC_MS_BTN2),  SFT_T(KC_MS_BTN1),          CTL_T(KC_MS_BTN1),  ALT_T(KC_MS_BTN2)
+    ),
+
     [_SYM] = LAYOUT(
         KC_LABK,        KC_LBRC,        KC_RBRC,        KC_RABK,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
         KC_CIRC,        KC_LPRN,        KC_RPRN,        KC_DLR,         KC_AT,                      XXXXXXX,            KC_TILDE,       KC_PIPE,            _______,        XXXXXXX,
         XXXXXXX,        KC_LCBR,        KC_RCBR,        KC_SCLN,        KC_AMPR,                    XXXXXXX,            KC_EXLM,        XXXXXXX,            XXXXXXX,        XXXXXXX,
                                                         CMD_T(KC_HASH), SFT_T(KC_ASTR),             CTL_T(KC_SLASH),    ALT_T(KC_BSLS)
+    ),
+
+    [_KITTY] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        RCS(KC_COMMA),  S(KC_LEFT),     S(KC_RIGHT),    RCS(KC_DOT),    XXXXXXX,                    XXXXXXX,            XXXXXXX,        _______,            XXXXXXX,        XXXXXXX,
+        RCS(KC_B),      RCS(KC_LEFT),   RCS(KC_RIGHT),  RCS(KC_F),      XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+                                                        RCS(KC_DOWN),   S(KC_DOWN),                 RCS(KC_L),          S(KC_UP)
     ),
 
     [_NAV] = LAYOUT(
@@ -64,25 +78,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_LCMD,        KC_LSFT,                    KC_LCTL,            KC_LALT
     ),
 
-    [_MSE] = LAYOUT(
-        XXXXXXX,        KC_WFWD,        KC_WBAK,        XXXXXXX,            XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        XXXXXXX,        KC_WH_U,        KC_WH_D,        _______,            XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
-        XXXXXXX,        KC_WH_L,        KC_WH_R,        XXXXXXX,            KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
-                                                        CMD_T(KC_MS_BTN2),  SFT_T(KC_MS_BTN1),          CTL_T(KC_MS_BTN1),  ALT_T(KC_MS_BTN2)
-    ),
-
     [_FUN] = LAYOUT(
         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            BL_UP,          BL_TOGG,            BL_DOWN,        XXXXXXX,
         XXXXXXX,        KC_F1,          KC_F2,          KC_F3,          XXXXXXX,                    XXXXXXX,            KC_F7,          KC_F8,              KC_F9,          XXXXXXX,
         _______,        KC_F4,          KC_F5,          KC_F6,          XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         _______,
                                                         KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
-    ),
-
-    [_KITTY] = LAYOUT(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        RCS(KC_COMMA),  S(KC_LEFT),     S(KC_RIGHT),    RCS(KC_DOT),    XXXXXXX,                    XXXXXXX,            XXXXXXX,        _______,            XXXXXXX,        XXXXXXX,
-        RCS(KC_B),      RCS(KC_LEFT),   RCS(KC_RIGHT),  RCS(KC_F),      XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-                                                        RCS(KC_DOWN),   S(KC_DOWN),                 RCS(KC_L),          S(KC_UP)
-
     ),
 };
