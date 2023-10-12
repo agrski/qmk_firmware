@@ -51,10 +51,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MSE] = LAYOUT(
-        XXXXXXX,        KC_WFWD,        KC_WBAK,        XXXXXXX,            XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        XXXXXXX,        KC_WH_U,        KC_WH_D,        _______,            XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
-        XXXXXXX,        KC_WH_L,        KC_WH_R,        XXXXXXX,            KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
-                                                        CMD_T(KC_MS_BTN2),  SFT_T(KC_MS_BTN1),          CTL_T(KC_MS_BTN1),  ALT_T(KC_MS_BTN2)
+        XXXXXXX,        KC_WFWD,        KC_WBAK,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        KC_WH_U,        KC_WH_D,        _______,        XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
+        XXXXXXX,        KC_WH_L,        KC_WH_R,        XXXXXXX,        KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
+                                                        KC_LCTL,        KC_LSFT,                    KC_MS_BTN1,  KC_MS_BTN2
     ),
 
     [_SYM] = LAYOUT(
