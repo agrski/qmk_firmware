@@ -23,7 +23,6 @@
 #define TAPPING_TERM 140
 #define DYNAMIC_TAPPING_TERM_INCREMENT 10
 
-// Not yet available in `keymap.json` format
 #ifdef RGB_MATRIX_ENABLE
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED
 #    define RGB_MATRIX_KEYPRESSES
@@ -32,7 +31,6 @@
 #    define ENABLE_RGB_MATRIX_RAINBOW_BEACON
 #endif
 
-// Not yet available in `keymap.json` format
 #ifdef MOUSEKEY_ENABLE
     #define MK_KINETIC_SPEED
     #define MOUSEKEY_BASE_SPEED 2000
