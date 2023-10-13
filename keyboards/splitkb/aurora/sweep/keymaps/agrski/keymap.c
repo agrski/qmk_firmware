@@ -115,3 +115,28 @@ void keyboard_pre_init_user(void) {
     setPinOutput(24);
     writePinHigh(24);
 }
+
+bool rgb_matrix_indicators_user(void) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case _FUNL:
+        case _FUNR:
+            rgb_matrix_set_color_all(RGB_GREEN);
+            break;
+        case _I3:
+        case _KITTY:
+            rgb_matrix_set_color_all(RGB_TURQUOISE);
+            break;
+        case _MSE:
+        case _NAV:
+            rgb_matrix_set_color_all(RGB_BLUE);
+            break;
+        case _SYM:
+        case _NUM:
+            rgb_matrix_set_color_all(RGB_GOLD);
+            break;
+        default:
+            rgb_matrix_set_color_all(RGB_RED);
+    }
+
+    return false;
+}
