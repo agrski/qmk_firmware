@@ -132,7 +132,7 @@ bool rgb_matrix_indicators_user(void) {
             break;
         case _SYM:
         case _NUM:
-            rgb_matrix_set_color_all(RGB_GOLD);
+            rgb_matrix_set_color_all(RGB_YELLOW);
             break;
         default:
             rgb_matrix_set_color_all(RGB_RED);
