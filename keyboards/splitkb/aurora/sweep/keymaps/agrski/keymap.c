@@ -31,7 +31,7 @@ enum layer_names {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
         KC_P,           KC_W,           KC_F,           KC_H,           XXXXXXX,                    XXXXXXX,        KC_J,               KC_K,               KC_L,           KC_DEL,
-        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_I3, KC_E),  LT(_MSE, KC_T), KC_G,                       KC_D,           LT(_NAV, KC_O),     LT(_KITTY, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
+        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_MSE, KC_E), LT(_I3, KC_T),  KC_G,                       KC_D,           LT(_NAV, KC_O),     LT(_KITTY, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
         KC_X,           KC_Q,           KC_U,           KC_R,           KC_TAB,                     KC_V,           KC_M,               KC_C,               KC_B,           KC_Z,
                                                         CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),  ALT_T(KC_ESC)
     ),
@@ -44,16 +44,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_I3] = LAYOUT(
-        XXXXXXX,        G(KC_UP),       XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_7),        G(KC_8),            G(KC_9),        XXXXXXX,
-        XXXXXXX,        G(KC_LEFT),     _______,        G(KC_RIGHT),    XXXXXXX,                    XXXXXXX,            G(KC_1),        G(KC_2),            G(KC_3),        XXXXXXX,
-        XXXXXXX,        G(KC_DOWN),     XXXXXXX,        G(KC_GRAVE),    XXXXXXX,                    XXXXXXX,            G(KC_4),        G(KC_5),            G(KC_6),        XXXXXXX,
-                                                        XXXXXXX,        KC_LSFT,                    G(KC_D),            G(KC_0)
+        XXXXXXX,        XXXXXXX,        G(KC_UP),       XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_7),        G(KC_8),            G(KC_9),        XXXXXXX,
+        XXXXXXX,        G(KC_LEFT),     G(KC_RIGHT),    _______,        XXXXXXX,                    XXXXXXX,            G(KC_1),        G(KC_2),            G(KC_3),        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        G(KC_DOWN),     XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_4),        G(KC_5),            G(KC_6),        XXXXXXX,
+                                                        G(KC_GRAVE),    KC_LSFT,                    G(KC_D),            G(KC_0)
     ),
 
     [_MSE] = LAYOUT(
-        XXXXXXX,        KC_WFWD,        KC_WBAK,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        XXXXXXX,        KC_WH_U,        KC_WH_D,        _______,        XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
-        XXXXXXX,        KC_WH_L,        KC_WH_R,        XXXXXXX,        KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
+        XXXXXXX,        KC_WH_U,        XXXXXXX,        KC_WFWD,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        KC_WBAK,        KC_WH_L,        _______,        KC_WH_D,        XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_WH_R,        KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
                                                         KC_LCTL,        KC_LSFT,                    KC_MS_BTN1,         KC_MS_BTN2
     ),
 
