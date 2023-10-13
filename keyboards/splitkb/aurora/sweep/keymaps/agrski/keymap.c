@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FUNR] = LAYOUT(
         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
         XXXXXXX,        RGB_VAD,        RGB_TOG,        RGB_VAI,        XXXXXXX,                    XXXXXXX,            KC_F7,          KC_F8,              KC_F9,          _______,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         XXXXXXX,
+        XXXXXXX,        XXXXXXX,        RGB_MOD,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         XXXXXXX,
                                                         KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
     ),
 };
