@@ -92,3 +92,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
     ),
 };
+
+void keyboard_pre_init_user(void) {
+    // Set LED pin as output and turn off as soon as QMK starts up.
+    // SplitKB advises that due to technical reasons, high is off and low is on.
+    setPinOutput(24);
+    writePinHigh(24);
+}
