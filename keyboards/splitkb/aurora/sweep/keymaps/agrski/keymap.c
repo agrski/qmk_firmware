@@ -93,6 +93,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+const uint16_t PROGMEM se_comma[]   = {LT(_NUM, KC_S), LT(_MSE, KC_E), COMBO_END};
+const uint16_t PROGMEM et_dot[]     = {LT(_MSE, KC_E), LT(_I3, KC_T), COMBO_END};
+const uint16_t PROGMEM ur_colon[]   = {KC_U, KC_R, COMBO_END};
+const uint16_t PROGMEM oi_quote[]   = {LT(_KITTY, KC_O), LT(_NAV, KC_I), COMBO_END};
+const uint16_t PROGMEM in_dquote[]  = {LT(_NAV, KC_I), LT(_SYM, KC_N), COMBO_END};
+const uint16_t PROGMEM mc_slash[]   = {KC_M, KC_C, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(se_comma,     KC_COMMA),
+    COMBO(et_dot,       KC_DOT),
+    COMBO(ur_colon,     KC_COLON),
+    COMBO(oi_quote,     KC_QUOTE),
+    COMBO(in_dquote,    KC_DOUBLE_QUOTE),
+    COMBO(mc_slash,     KC_SLASH),
+};
+
 void keyboard_pre_init_user(void) {
     // Set LED pin as output and turn off as soon as QMK starts up.
     // SplitKB advises that due to technical reasons, high is off and low is on.

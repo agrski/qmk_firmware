@@ -6,6 +6,7 @@ EXTRAKEY_ENABLE     = yes
 LEADER_ENABLE       = yes
 SEND_STRING_ENABLE  = yes
 RGB_MATRIX_ENABLE   = yes
+COMBO_ENABLE		= yes
 
 RGBLIGHT_ENABLE         = no
 OLED_ENABLE             = no
