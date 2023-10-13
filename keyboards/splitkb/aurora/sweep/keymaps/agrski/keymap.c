@@ -30,10 +30,10 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-        KC_P,           KC_W,           KC_F,           KC_H,           XXXXXXX,                    XXXXXXX,        KC_J,               KC_K,               KC_L,           KC_DEL,
-        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_MSE, KC_E), LT(_I3, KC_T),  KC_G,                       KC_D,           LT(_NAV, KC_O),     LT(_KITTY, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
-        KC_X,           KC_Q,           KC_U,           KC_R,           KC_TAB,                     KC_V,           KC_M,               KC_C,               KC_B,           KC_Z,
-                                                        CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),  ALT_T(KC_ESC)
+        KC_P,           KC_W,           KC_F,           KC_H,           XXXXXXX,                    XXXXXXX,            KC_J,               KC_K,               KC_L,           KC_DEL,
+        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_MSE, KC_E), LT(_I3, KC_T),  KC_G,                       KC_D,               LT(_KITTY, KC_O),   LT(_NAV, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
+        KC_X,           KC_Q,           KC_U,           KC_R,           KC_TAB,                     KC_V,               KC_M,               KC_C,               KC_B,           KC_Z,
+                                                        CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),      ALT_T(KC_ESC)
     ),
 
     [_NUM] = LAYOUT(
@@ -66,14 +66,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_KITTY] = LAYOUT(
         A(KC_F1),       A(KC_F2),       A(KC_F3),       A(KC_F4),       A(KC_F5),                   XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        RCS(KC_COMMA),  S(KC_LEFT),     S(KC_RIGHT),    RCS(KC_DOT),    A(KC_F6),                   XXXXXXX,            A(KC_F8),       _______,            A(KC_F9),       A(KC_F10),
+        RCS(KC_COMMA),  S(KC_LEFT),     S(KC_RIGHT),    RCS(KC_DOT),    A(KC_F6),                   XXXXXXX,            _______,        A(KC_F8),           A(KC_F9),       A(KC_F10),
         RCS(KC_B),      RCS(KC_LEFT),   RCS(KC_RIGHT),  RCS(KC_F),      A(KC_F7),                   XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
                                                         RCS(KC_DOWN),   S(KC_DOWN),                 RCS(KC_L),          S(KC_UP)
     ),
 
     [_NAV] = LAYOUT(
         XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        KC_PGUP,        KC_LEFT,        KC_UP,          KC_RIGHT,       XXXXXXX,                    XXXXXXX,            _______,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        KC_PGUP,        KC_LEFT,        KC_UP,          KC_RIGHT,       XXXXXXX,                    XXXXXXX,            XXXXXXX,        _______,            XXXXXXX,        XXXXXXX,
         KC_PGDN,        KC_HOME,        KC_DOWN,        KC_END,         XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
                                                         KC_LCMD,        KC_LSFT,                    KC_LCTL,            KC_LALT
     ),
