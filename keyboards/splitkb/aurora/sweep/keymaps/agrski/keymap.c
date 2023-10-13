@@ -47,14 +47,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        XXXXXXX,        G(KC_UP),       XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_7),        G(KC_8),            G(KC_9),        XXXXXXX,
         XXXXXXX,        G(KC_LEFT),     G(KC_RIGHT),    _______,        XXXXXXX,                    XXXXXXX,            G(KC_1),        G(KC_2),            G(KC_3),        XXXXXXX,
         XXXXXXX,        XXXXXXX,        G(KC_DOWN),     XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_4),        G(KC_5),            G(KC_6),        XXXXXXX,
-                                                        G(KC_GRAVE),    KC_LSFT,                    G(KC_D),            G(KC_0)
+                                                        G(KC_GRAVE),    KC_LSFT,                    G(KC_0),            G(KC_D)
     ),
 
     [_MSE] = LAYOUT(
         XXXXXXX,        KC_WH_U,        XXXXXXX,        KC_WFWD,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
         KC_WBAK,        KC_WH_L,        _______,        KC_WH_D,        XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_WH_R,        KC_MS_BTN3,                 KC_MS_BTN3,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
-                                                        KC_LCTL,        KC_LSFT,                    KC_MS_BTN1,         KC_MS_BTN2
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_WH_R,        KC_MS_BTN3,                 KC_MS_BTN2,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
+                                                        KC_LCTL,        KC_LSFT,                    KC_MS_BTN1,         KC_MS_BTN3
     ),
 
     [_SYM] = LAYOUT(
