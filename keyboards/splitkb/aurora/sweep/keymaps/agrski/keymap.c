@@ -16,6 +16,48 @@
 
 #include QMK_KEYBOARD_H
 
+/*
+ * Tap dances for:
+ * - thumb keys to use alternate thumbs' keys.
+ * - function keys to switch layer instead of toggling while held; useful for debugging and search, for example; exiting layer should only require single tap.
+ */
+
+// BEGIN tap-dance config
+typedef enum {
+    TD_NONE,
+    TD_UNKNOWN,
+    TD_TAP,
+    TD_HOLD,
+    TD_TAP_TAP,
+    TD_TAP_HOLD,
+    TD_TAP_TAP_TAP
+} td_state_t;
+
+typedef struct {
+    bool is_press_action;
+    td_state_t state;
+} td_tap_t;
+
+enum td_sequences {
+    THUMB_L_INNER,
+    THUMB_L_OUTER,
+    THUMB_R_INNER,
+    THUMB_R_OUTER
+};
+
+td_state_t current_td_state(tap_dance_state_t *state);
+
+void thumb_l_inner_finished(tap_dance_state_t *state, void *user_date);
+void thumb_l_inner_reset(tap_dance_state_t *state, void *user_date);
+void thumb_l_outer_finished(tap_dance_state_t *state, void *user_date);
+void thumb_l_outer_reset(tap_dance_state_t *state, void *user_date);
+void thumb_r_inner_finished(tap_dance_state_t *state, void *user_date);
+void thumb_r_inner_reset(tap_dance_state_t *state, void *user_date);
+void thumb_r_outer_finished(tap_dance_state_t *state, void *user_date);
+void thumb_r_outer_reset(tap_dance_state_t *state, void *user_date);
+
+// END tap-dance config
+
 enum layer_names {
     _BASE,  // Alphabetic
     _NUM,   // Numeric
