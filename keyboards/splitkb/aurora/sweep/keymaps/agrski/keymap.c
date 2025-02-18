@@ -182,3 +182,29 @@ bool rgb_matrix_indicators_user(void) {
 
     return false;
 }
+
+// BEGIN tap-dance implementation
+
+td_state_t current_td_state(tap_dance_state_t *state) {
+    // Interruptions do not change the interpretation.
+    if (1 == state->count) {
+        if (!state->pressed) {
+            return TD_TAP;
+        } else {
+            return TD_HOLD;
+        }
+    } else if (2 == state->count) {
+        if (!state->pressed) {
+            return TD_TAP_TAP;
+        } else {
+            return TD_TAP_HOLD;
+        }
+    } else if (3 == state->count) {
+        // Must be fast typing; not expected to be used for held keys.
+        return TD_TAP_TAP_TAP;
+    }
+
+    return TD_UNKNOWN;
+}
+
+// END tap-dance implementation
