@@ -17,8 +17,7 @@
 #include QMK_KEYBOARD_H
 
 /*
- * Tap dances for:
- * - thumb keys to use alternate thumbs' keys.
+ * TODO - add tap dances for:
  * - function keys to switch layer instead of toggling while held; useful for debugging and search, for example; exiting layer should only require single tap.
  */
 
