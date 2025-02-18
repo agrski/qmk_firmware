@@ -307,9 +307,60 @@ void thumb_l_outer_reset(tap_dance_state_t *state, void *user_data) {
     }
 }
 
+static td_tap_t td_state_thumb_r_inner = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+void thumb_r_inner_finished(tap_dance_state_t *state, void *user_date) {
+    td_state_thumb_r_inner.state = current_td_state(state);
+
+    switch (td_state_thumb_r_inner.state) {
+        case TD_TAP:
+            register_code(KC_ESC);
+            break;
+        case TD_HOLD:
+            register_mods(MOD_BIT(KC_LALT));
+            break;
+        case TD_TAP_TAP:
+            tap_code(KC_ESC);
+            register_code(KC_ESC);
+            break;
+        case TD_TAP_HOLD:
+            register_mods(MOD_BIT(KC_LCMD));
+            break;
+        case TD_TAP_TAP_TAP:
+            tap_code(KC_ESC);
+            tap_code(KC_ESC);
+            register_code(KC_ESC);
+            break;
+        default:
+            break;
+    }
+}
+
+void thumb_r_inner_reset(tap_dance_state_t *state, void *user_data) {
+    switch (td_state_thumb_r_inner.state) {
+        case TD_TAP:
+        case TD_TAP_TAP:
+        case TD_TAP_TAP_TAP:
+            unregister_code(KC_ESC);
+            break;
+        case TD_HOLD:
+            unregister_mods(MOD_BIT(KC_LALT));
+            break;
+        case TD_TAP_HOLD:
+            unregister_mods(MOD_BIT(KC_LCMD));
+            break;
+        default:
+            break;
+    }
+}
+
 tap_dance_action_t tap_dance_actions[] = {
     [THUMB_L_INNER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_l_inner_finished, thumb_l_inner_reset),
-    [THUMB_L_OUTER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_l_outer_finished, thumb_l_outer_reset)
+    [THUMB_L_OUTER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_l_outer_finished, thumb_l_outer_reset),
+    [THUMB_R_INNER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_r_inner_finished, thumb_r_inner_reset)
 }
 
 // END tap-dance implementation
