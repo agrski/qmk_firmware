@@ -411,6 +411,6 @@ tap_dance_action_t tap_dance_actions[] = {
     [THUMB_L_OUTER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_l_outer_finished, thumb_l_outer_reset),
     [THUMB_R_INNER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_r_inner_finished, thumb_r_inner_reset),
     [THUMB_R_OUTER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_r_outer_finished, thumb_r_outer_reset)
-}
+};
 
 // END tap-dance implementation
