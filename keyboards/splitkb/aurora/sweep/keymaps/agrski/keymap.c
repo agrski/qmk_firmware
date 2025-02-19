@@ -17,20 +17,23 @@
 #include QMK_KEYBOARD_H
 
 enum layer_names {
-    _BASE,
-    _NUM,
-    _SYM,
-    _NAV,
-    _FUN,
-    _KITTY,
+    _BASE,  // Alphabetic
+    _NUM,   // Numeric
+    _I3,    // i3wm
+    _SYM,   // Symbolic
+    _NAV,   // Navigation
+    _MSE,   // Mouse
+    _FUNL,  // Functions, left hand
+    _FUNR,  // Functions, right hand
+    _KITTY, // KiTTY terminal
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-        KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,                       KC_H,           KC_L,               KC_U,               KC_Y,           KC_Z,
-        KC_A,           LT(_NUM, KC_R), KC_S,           KC_T,           KC_D,                       KC_J,           KC_N,               LT(_KITTY, KC_E),   LT(_SYM, KC_I), KC_O,
-        TG(_NAV),       KC_X,           KC_C,           KC_V,           KC_TAB,                     KC_DEL,         KC_M,               KC_K,               KC_B,           TG(_FUN),
-                                                        CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),  ALT_T(KC_ESC)
+        KC_P,           KC_W,           KC_F,           KC_H,           XXXXXXX,                    XXXXXXX,            KC_J,               KC_K,               KC_L,           KC_DEL,
+        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_MSE, KC_E), LT(_I3, KC_T),  KC_G,                       KC_D,               LT(_KITTY, KC_O),   LT(_NAV, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
+        KC_X,           KC_Q,           KC_U,           KC_R,           KC_TAB,                     KC_V,               KC_M,               KC_C,               KC_B,           KC_Z,
+                                                        CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),      ALT_T(KC_ESC)
     ),
 
     [_NUM] = LAYOUT(
@@ -40,32 +43,100 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                         CMD_T(KC_COMM), SFT_T(KC_DOT),              CTL_T(KC_QUOTE),    ALT_T(KC_0)
     ),
 
+    [_I3] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        G(KC_UP),       XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_7),        G(KC_8),            G(KC_9),        XXXXXXX,
+        XXXXXXX,        G(KC_LEFT),     G(KC_RIGHT),    _______,        XXXXXXX,                    XXXXXXX,            G(KC_1),        G(KC_2),            G(KC_3),        XXXXXXX,
+        XXXXXXX,        XXXXXXX,        G(KC_DOWN),     XXXXXXX,        XXXXXXX,                    XXXXXXX,            G(KC_4),        G(KC_5),            G(KC_6),        XXXXXXX,
+                                                        G(KC_GRAVE),    KC_LSFT,                    G(KC_0),            G(KC_D)
+    ),
+
+    [_MSE] = LAYOUT(
+        XXXXXXX,        KC_WH_U,        XXXXXXX,        KC_WFWD,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        KC_WBAK,        KC_WH_L,        _______,        KC_WH_D,        XXXXXXX,                    XXXXXXX,            KC_MS_L,        KC_MS_U,            KC_MS_R,        KC_ESC,
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        KC_WH_R,        KC_ACL2,                    KC_MS_BTN2,         XXXXXXX,        KC_MS_D,            XXXXXXX,        KC_ESC,
+                                                        CTL_T(KC_ACL1), SFT_T(KC_ACL0),             KC_MS_BTN1,         KC_MS_BTN3
+    ),
+
     [_SYM] = LAYOUT(
         KC_LABK,        KC_LBRC,        KC_RBRC,        KC_RABK,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        KC_CIRC,        KC_LPRN,        KC_RPRN,        KC_DLR,         KC_AT,                      XXXXXXX,            KC_TILDE,       KC_PIPE,            _______,        XXXXXXX,
-        XXXXXXX,        KC_LCBR,        KC_RCBR,        KC_SCLN,        KC_AMPR,                    XXXXXXX,            KC_EXLM,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-                                                        CMD_T(KC_HASH), SFT_T(KC_ASTR),             CTL_T(KC_SLASH),    ALT_T(KC_BSLS)
-    ),
-
-    [_NAV] = LAYOUT(
-        KC_MS_BTN3,     KC_MS_BTN2,     KC_UP,          KC_MS_BTN1,     XXXXXXX,                    XXXXXXX,            KC_MS_BTN1,     KC_MS_U,            KC_MS_BTN2,     KC_MS_BTN3,
-        KC_ESC,         KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_WBAK,                    KC_WFWD,            KC_MS_L,        KC_MS_D,            KC_MS_R,        KC_ESC,
-        _______,        KC_END,         KC_PGDN,        KC_PGUP,        KC_HOME,                    KC_WH_L,            KC_WH_U,        KC_WH_D,            KC_WH_R,        _______,
-                                                        KC_LCMD,        KC_LSFT,                    KC_LCTL,            KC_LALT
-    ),
-
-    [_FUN] = LAYOUT(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            BL_UP,          BL_TOGG,            BL_DOWN,        XXXXXXX,
-        XXXXXXX,        KC_F1,          KC_F2,          KC_F3,          XXXXXXX,                    XXXXXXX,            KC_F7,          KC_F8,              KC_F9,          XXXXXXX,
-        _______,        KC_F4,          KC_F5,          KC_F6,          XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         _______,
-                                                        KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
+        KC_CIRC,        KC_LPRN,        KC_RPRN,        KC_DLR,         KC_AT,                      XXXXXXX,            KC_HASH,        KC_PIPE,            _______,        XXXXXXX,
+        XXXXXXX,        KC_LCBR,        KC_RCBR,        KC_SCLN,        KC_AMPR,                    XXXXXXX,            KC_EXLM,        KC_TILDE,           XXXXXXX,        XXXXXXX,
+                                                        KC_LCMD,        SFT_T(KC_PAST),             CTL_T(KC_SLASH),    ALT_T(KC_BSLS)
     ),
 
     [_KITTY] = LAYOUT(
-        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
-        RCS(KC_COMMA),  S(KC_LEFT),     S(KC_RIGHT),    RCS(KC_DOT),    XXXXXXX,                    XXXXXXX,            XXXXXXX,        _______,            XXXXXXX,        XXXXXXX,
-        RCS(KC_B),      RCS(KC_LEFT),   RCS(KC_RIGHT),  RCS(KC_F),      XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        A(KC_F1),       A(KC_F2),       A(KC_F3),       A(KC_F4),       A(KC_F5),                   XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        RCS(KC_COMMA),  RCS(KC_DOT),    S(KC_LEFT),     S(KC_RIGHT),    A(KC_F6),                   XXXXXXX,            _______,        A(KC_F8),           A(KC_F9),       A(KC_F10),
+        RCS(KC_B),      RCS(KC_F),      RCS(KC_LEFT),   RCS(KC_RIGHT),  A(KC_F7),                   XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
                                                         RCS(KC_DOWN),   S(KC_DOWN),                 RCS(KC_L),          S(KC_UP)
+    ),
 
+    [_NAV] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        KC_PGUP,        KC_LEFT,        KC_UP,          KC_RIGHT,       XXXXXXX,                    XXXXXXX,            XXXXXXX,        _______,            XXXXXXX,        XXXXXXX,
+        KC_PGDN,        KC_HOME,        KC_DOWN,        KC_END,         XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+                                                        KC_LCMD,        KC_LSFT,                    KC_LCTL,            KC_LALT
+    ),
+
+    [_FUNL] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        _______,        KC_F1,          KC_F2,          KC_F3,          XXXXXXX,                    XXXXXXX,            DT_UP,          DT_DOWN,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        KC_F4,          KC_F5,          KC_F6,          XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        _______,
+                                                        KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
+    ),
+
+    [_FUNR] = LAYOUT(
+        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            XXXXXXX,        XXXXXXX,            XXXXXXX,        XXXXXXX,
+        XXXXXXX,        RGB_VAD,        RGB_TOG,        RGB_VAI,        XXXXXXX,                    XXXXXXX,            KC_F7,          KC_F8,              KC_F9,          _______,
+        XXXXXXX,        XXXXXXX,        RGB_MOD,        XXXXXXX,        XXXXXXX,                    XXXXXXX,            KC_F10,         KC_F11,             KC_F12,         XXXXXXX,
+                                                        KC_PASTE,       KC_COPY,                    KC_VOLD,            KC_VOLU
     ),
 };
+
+const uint16_t PROGMEM se_comma[]   = {LT(_NUM, KC_S), LT(_MSE, KC_E), COMBO_END};
+const uint16_t PROGMEM et_dot[]     = {LT(_MSE, KC_E), LT(_I3, KC_T), COMBO_END};
+const uint16_t PROGMEM ur_colon[]   = {KC_U, KC_R, COMBO_END};
+const uint16_t PROGMEM oi_quote[]   = {LT(_KITTY, KC_O), LT(_NAV, KC_I), COMBO_END};
+const uint16_t PROGMEM in_dquote[]  = {LT(_NAV, KC_I), LT(_SYM, KC_N), COMBO_END};
+const uint16_t PROGMEM mc_slash[]   = {KC_M, KC_C, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(se_comma,     KC_COMMA),
+    COMBO(et_dot,       KC_DOT),
+    COMBO(ur_colon,     KC_COLON),
+    COMBO(oi_quote,     KC_QUOTE),
+    COMBO(in_dquote,    KC_DOUBLE_QUOTE),
+    COMBO(mc_slash,     KC_SLASH),
+};
+
+void keyboard_pre_init_user(void) {
+    // Set LED pin as output and turn off as soon as QMK starts up.
+    // SplitKB advises that due to technical reasons, high is off and low is on.
+    setPinOutput(24);
+    writePinHigh(24);
+}
+
+bool rgb_matrix_indicators_user(void) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case _FUNL:
+        case _FUNR:
+            rgb_matrix_set_color_all(RGB_GREEN);
+            break;
+        case _I3:
+        case _KITTY:
+            rgb_matrix_set_color_all(RGB_TURQUOISE);
+            break;
+        case _MSE:
+        case _NAV:
+            rgb_matrix_set_color_all(RGB_BLUE);
+            break;
+        case _SYM:
+        case _NUM:
+            rgb_matrix_set_color_all(RGB_YELLOW);
+            break;
+        default:
+            rgb_matrix_set_color_all(RGB_RED);
+    }
+
+    return false;
+}

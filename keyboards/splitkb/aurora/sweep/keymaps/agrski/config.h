@@ -19,19 +19,42 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 200U
 
-// Not yet available in `keymap.json` format
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 140
+#define DYNAMIC_TAPPING_TERM_INCREMENT 10
+
 #ifdef RGB_MATRIX_ENABLE
+#    define SPLIT_LAYER_STATE_ENABLE
+#    define SPLIT_TRANSPORT_MIRROR
+#    define SPLIT_LED_STATE_ENABLE
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED
 #    define RGB_MATRIX_KEYPRESSES
+#    define ENABLE_RGB_SOLID_COLOR
 #    define ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #    define ENABLE_RGB_MATRIX_SOLID_SPLASH
-#    define ENABLE_RGB_MATRIX_RAINBOW_BEACON
 #endif
 
-// Not yet available in `keymap.json` format
 #ifdef MOUSEKEY_ENABLE
-     // The default is 100
-#    define MOUSEKEY_WHEEL_INTERVAL 50
-     // The default is 40
-#    define MOUSEKEY_WHEEL_TIME_TO_MAX 100
+    #define MK_3_SPEED
+
+    #define MK_C_OFFSET_0   2
+    #define MK_C_INTERVAL_0 16
+    #define MK_C_OFFSET_1   8
+    #define MK_C_INTERVAL_1 16
+    #define MK_C_OFFSET_2   64
+    #define MK_C_INTERVAL_2 16
+
+    #define MK_W_OFFSET_0   1
+    #define MK_W_INTERVAL_0 200
+    #define MK_W_OFFSET_1   1
+    #define MK_W_INTERVAL_1 120
+    #define MK_W_OFFSET_2   1
+    #define MK_W_INTERVAL_2 32
 #endif
+
+//   #ifdef MOUSEKEY_ENABLE
+//       #define MK_KINETIC_SPEED
+//       #define MOUSEKEY_BASE_SPEED 2000
+//       #define MOUSEKEY_WHEEL_INITIAL_MOVEMENTS 1
+//       #define MOUSEKEY_WHEEL_ACCELERATED_MOVEMENTS 32
+//   #endif

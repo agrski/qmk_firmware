@@ -6,9 +6,12 @@ EXTRAKEY_ENABLE     = yes
 LEADER_ENABLE       = yes
 SEND_STRING_ENABLE  = yes
 RGB_MATRIX_ENABLE   = yes
+COMBO_ENABLE		= yes
 
 RGBLIGHT_ENABLE         = no
 OLED_ENABLE             = no
 AUTO_SHIFT_ENABLE       = no
 AUTO_SHIFT_MODIFIERS    = no
 UNICODE_ENABLE          = no
+
+DYNAMIC_TAPPING_TERM_ENABLE = yes
