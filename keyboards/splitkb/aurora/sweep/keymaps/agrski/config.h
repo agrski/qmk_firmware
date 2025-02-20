@@ -23,7 +23,7 @@
 
 #define COMBO_TERM 30
 #define TAPPING_TERM 100
-#define DYNAMIC_TAPPING_TERM_INCREMENT 10
+#define DYNAMIC_TAPPING_TERM_INCREMENT 5
 
 // END tapping settings
 
