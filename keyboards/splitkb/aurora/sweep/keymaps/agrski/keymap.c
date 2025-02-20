@@ -16,6 +16,42 @@
 
 #include QMK_KEYBOARD_H
 
+// BEGIN tap-dance config
+typedef enum {
+    TD_NONE,
+    TD_UNKNOWN,
+    TD_TAP,
+    TD_HOLD,
+    TD_TAP_TAP,
+    TD_TAP_HOLD,
+    TD_TAP_TAP_TAP
+} td_state_t;
+
+typedef struct {
+    bool is_press_action;
+    td_state_t state;
+} td_tap_t;
+
+enum td_sequences {
+    THUMB_L_INNER,
+    THUMB_L_OUTER,
+    THUMB_R_INNER,
+    THUMB_R_OUTER
+};
+
+td_state_t current_td_state(tap_dance_state_t *state);
+
+void thumb_l_inner_finished(tap_dance_state_t *state, void *user_date);
+void thumb_l_inner_reset(tap_dance_state_t *state, void *user_date);
+void thumb_l_outer_finished(tap_dance_state_t *state, void *user_date);
+void thumb_l_outer_reset(tap_dance_state_t *state, void *user_date);
+void thumb_r_inner_finished(tap_dance_state_t *state, void *user_date);
+void thumb_r_inner_reset(tap_dance_state_t *state, void *user_date);
+void thumb_r_outer_finished(tap_dance_state_t *state, void *user_date);
+void thumb_r_outer_reset(tap_dance_state_t *state, void *user_date);
+
+// END tap-dance config
+
 enum layer_names {
     _BASE,  // Alphabetic
     _NUM,   // Numeric
@@ -30,10 +66,10 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-        KC_P,           KC_W,           KC_F,           KC_H,           XXXXXXX,                    XXXXXXX,            KC_J,               KC_K,               KC_L,           KC_DEL,
-        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_MSE, KC_E), LT(_I3, KC_T),  KC_G,                       KC_D,               LT(_KITTY, KC_O),   LT(_NAV, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
-        KC_X,           KC_Q,           KC_U,           KC_R,           KC_TAB,                     KC_V,               KC_M,               KC_C,               KC_B,           KC_Z,
-                                                        CMD_T(KC_BSPC), SFT_T(KC_SPC),              CTL_T(KC_ENT),      ALT_T(KC_ESC)
+        KC_P,           KC_W,           KC_F,           KC_H,               XXXXXXX,                    XXXXXXX,            KC_J,               KC_K,               KC_L,           KC_DEL,
+        LT(_FUNL, KC_A),LT(_NUM, KC_S), LT(_MSE, KC_E), LT(_I3, KC_T),      KC_G,                       KC_D,               LT(_KITTY, KC_O),   LT(_NAV, KC_I),   LT(_SYM, KC_N), LT(_FUNR, KC_Y),
+        KC_X,           KC_Q,           KC_U,           KC_R,               KC_TAB,                     KC_V,               KC_M,               KC_C,               KC_B,           KC_Z,
+                                                        TD(THUMB_L_INNER),  TD(THUMB_L_OUTER),          TD(THUMB_R_OUTER),  TD(THUMB_R_INNER)
     ),
 
     [_NUM] = LAYOUT(
@@ -140,3 +176,236 @@ bool rgb_matrix_indicators_user(void) {
 
     return false;
 }
+
+// BEGIN tap-dance implementation
+
+td_state_t current_td_state(tap_dance_state_t *state) {
+    // Interruptions do not change the interpretation.
+    if (1 == state->count) {
+        if (!state->pressed) {
+            return TD_TAP;
+        } else {
+            return TD_HOLD;
+        }
+    } else if (2 == state->count) {
+        if (!state->pressed) {
+            return TD_TAP_TAP;
+        } else {
+            return TD_TAP_HOLD;
+        }
+    } else if (3 == state->count) {
+        // Must be fast typing; not expected to be used for held keys.
+        return TD_TAP_TAP_TAP;
+    }
+
+    return TD_UNKNOWN;
+}
+
+static td_tap_t td_state_thumb_l_inner = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+void thumb_l_inner_finished(tap_dance_state_t *state, void *user_date) {
+    td_state_thumb_l_inner.state = current_td_state(state);
+
+    switch (td_state_thumb_l_inner.state) {
+        case TD_TAP:
+            register_code(KC_BSPC);
+            break;
+        case TD_HOLD:
+            register_mods(MOD_BIT(KC_LCMD));
+            break;
+        case TD_TAP_TAP:
+            tap_code(KC_BSPC);
+            register_code(KC_BSPC);
+            break;
+        case TD_TAP_HOLD:
+            register_mods(MOD_BIT(KC_LALT));
+            break;
+        case TD_TAP_TAP_TAP:
+            tap_code(KC_BSPC);
+            tap_code(KC_BSPC);
+            register_code(KC_BSPC);
+            break;
+        default:
+            break;
+    }
+}
+
+void thumb_l_inner_reset(tap_dance_state_t *state, void *user_data) {
+    switch (td_state_thumb_l_inner.state) {
+        case TD_TAP:
+        case TD_TAP_TAP:
+        case TD_TAP_TAP_TAP:
+            unregister_code(KC_BSPC);
+            break;
+        case TD_HOLD:
+            unregister_mods(MOD_BIT(KC_LCMD));
+            break;
+        case TD_TAP_HOLD:
+            unregister_mods(MOD_BIT(KC_LALT));
+            break;
+        default:
+            break;
+    }
+}
+
+static td_tap_t td_state_thumb_l_outer = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+void thumb_l_outer_finished(tap_dance_state_t *state, void *user_date) {
+    td_state_thumb_l_outer.state = current_td_state(state);
+
+    switch (td_state_thumb_l_outer.state) {
+        case TD_TAP:
+            register_code(KC_SPC);
+            break;
+        case TD_HOLD:
+            register_mods(MOD_BIT(KC_LSFT));
+            break;
+        case TD_TAP_TAP:
+            tap_code(KC_SPC);
+            register_code(KC_SPC);
+            break;
+        case TD_TAP_HOLD:
+            register_mods(MOD_BIT(KC_LCTL));
+            break;
+        case TD_TAP_TAP_TAP:
+            tap_code(KC_SPC);
+            tap_code(KC_SPC);
+            register_code(KC_SPC);
+            break;
+        default:
+            break;
+    }
+}
+
+void thumb_l_outer_reset(tap_dance_state_t *state, void *user_data) {
+    switch (td_state_thumb_l_outer.state) {
+        case TD_TAP:
+        case TD_TAP_TAP:
+        case TD_TAP_TAP_TAP:
+            unregister_code(KC_SPC);
+            break;
+        case TD_HOLD:
+            unregister_mods(MOD_BIT(KC_LSFT));
+            break;
+        case TD_TAP_HOLD:
+            unregister_mods(MOD_BIT(KC_LCTL));
+            break;
+        default:
+            break;
+    }
+}
+
+static td_tap_t td_state_thumb_r_inner = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+void thumb_r_inner_finished(tap_dance_state_t *state, void *user_date) {
+    td_state_thumb_r_inner.state = current_td_state(state);
+
+    switch (td_state_thumb_r_inner.state) {
+        case TD_TAP:
+            register_code(KC_ESC);
+            break;
+        case TD_HOLD:
+            register_mods(MOD_BIT(KC_LALT));
+            break;
+        case TD_TAP_TAP:
+            tap_code(KC_ESC);
+            register_code(KC_ESC);
+            break;
+        case TD_TAP_HOLD:
+            register_mods(MOD_BIT(KC_LCMD));
+            break;
+        case TD_TAP_TAP_TAP:
+            tap_code(KC_ESC);
+            tap_code(KC_ESC);
+            register_code(KC_ESC);
+            break;
+        default:
+            break;
+    }
+}
+
+void thumb_r_inner_reset(tap_dance_state_t *state, void *user_data) {
+    switch (td_state_thumb_r_inner.state) {
+        case TD_TAP:
+        case TD_TAP_TAP:
+        case TD_TAP_TAP_TAP:
+            unregister_code(KC_ESC);
+            break;
+        case TD_HOLD:
+            unregister_mods(MOD_BIT(KC_LALT));
+            break;
+        case TD_TAP_HOLD:
+            unregister_mods(MOD_BIT(KC_LCMD));
+            break;
+        default:
+            break;
+    }
+}
+
+static td_tap_t td_state_thumb_r_outer = {
+    .is_press_action = true,
+    .state = TD_NONE
+};
+
+void thumb_r_outer_finished(tap_dance_state_t *state, void *user_date) {
+    td_state_thumb_r_outer.state = current_td_state(state);
+
+    switch (td_state_thumb_r_outer.state) {
+        case TD_TAP:
+            register_code(KC_ENT);
+            break;
+        case TD_HOLD:
+            register_mods(MOD_BIT(KC_LCTL));
+            break;
+        case TD_TAP_TAP:
+            tap_code(KC_ENT);
+            register_code(KC_ENT);
+            break;
+        case TD_TAP_HOLD:
+            register_mods(MOD_BIT(KC_LSFT));
+            break;
+        case TD_TAP_TAP_TAP:
+            tap_code(KC_ENT);
+            tap_code(KC_ENT);
+            register_code(KC_ENT);
+            break;
+        default:
+            break;
+    }
+}
+
+void thumb_r_outer_reset(tap_dance_state_t *state, void *user_data) {
+    switch (td_state_thumb_r_outer.state) {
+        case TD_TAP:
+        case TD_TAP_TAP:
+        case TD_TAP_TAP_TAP:
+            unregister_code(KC_ENT);
+            break;
+        case TD_HOLD:
+            unregister_mods(MOD_BIT(KC_LCTL));
+            break;
+        case TD_TAP_HOLD:
+            unregister_mods(MOD_BIT(KC_LSFT));
+            break;
+        default:
+            break;
+    }
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [THUMB_L_INNER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_l_inner_finished, thumb_l_inner_reset),
+    [THUMB_L_OUTER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_l_outer_finished, thumb_l_outer_reset),
+    [THUMB_R_INNER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_r_inner_finished, thumb_r_inner_reset),
+    [THUMB_R_OUTER] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, thumb_r_outer_finished, thumb_r_outer_reset)
+};
+
+// END tap-dance implementation
