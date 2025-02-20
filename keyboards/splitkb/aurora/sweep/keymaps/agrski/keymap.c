@@ -16,11 +16,6 @@
 
 #include QMK_KEYBOARD_H
 
-/*
- * TODO - add tap dances for:
- * - function keys to switch layer instead of toggling while held; useful for debugging and search, for example; exiting layer should only require single tap.
- */
-
 // BEGIN tap-dance config
 typedef enum {
     TD_NONE,
