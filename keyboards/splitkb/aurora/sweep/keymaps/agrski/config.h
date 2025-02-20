@@ -21,8 +21,8 @@
 
 // BEGIN tapping settings
 
-#define COMBO_TERM 30
-#define TAPPING_TERM 100
+#define COMBO_TERM 20
+#define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
 #define DYNAMIC_TAPPING_TERM_INCREMENT 5
 
