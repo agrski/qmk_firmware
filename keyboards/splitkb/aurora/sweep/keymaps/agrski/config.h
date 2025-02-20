@@ -21,7 +21,6 @@
 
 // BEGIN tapping settings
 
-#define PERMISSIVE_HOLD
 #define COMBO_TERM 30
 #define TAPPING_TERM 140
 #define DYNAMIC_TAPPING_TERM_INCREMENT 10
