@@ -177,6 +177,18 @@ bool rgb_matrix_indicators_user(void) {
     return false;
 }
 
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TD(THUMB_L_INNER):
+        case TD(THUMB_L_OUTER):
+        case TD(THUMB_R_OUTER):
+        case TD(THUMB_R_INNER):
+            return 200;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 // BEGIN tap-dance implementation
 
 td_state_t current_td_state(tap_dance_state_t *state) {
