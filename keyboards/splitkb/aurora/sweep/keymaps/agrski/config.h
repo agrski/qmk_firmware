@@ -37,6 +37,7 @@
 #ifdef MOUSEKEY_ENABLE
     #define MK_3_SPEED
 
+    // Constant speed cursor movements.
     #define MK_C_OFFSET_0   2
     #define MK_C_INTERVAL_0 16
     #define MK_C_OFFSET_1   8
@@ -44,6 +45,7 @@
     #define MK_C_OFFSET_2   64
     #define MK_C_INTERVAL_2 16
 
+    // Constant speed wheel (scroll) movements.
     #define MK_W_OFFSET_0   1
     #define MK_W_INTERVAL_0 200
     #define MK_W_OFFSET_1   1
