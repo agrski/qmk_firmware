@@ -47,9 +47,9 @@
 
     // Constant speed wheel (scroll) movements.
     #define MK_W_OFFSET_0   1
-    #define MK_W_INTERVAL_0 200
+    #define MK_W_INTERVAL_0 120
     #define MK_W_OFFSET_1   1
-    #define MK_W_INTERVAL_1 120
+    #define MK_W_INTERVAL_1 60
     #define MK_W_OFFSET_2   1
     #define MK_W_INTERVAL_2 32
 #endif
