@@ -42,7 +42,7 @@
     #define MK_C_INTERVAL_0 16
     #define MK_C_OFFSET_1   8
     #define MK_C_INTERVAL_1 16
-    #define MK_C_OFFSET_2   64
+    #define MK_C_OFFSET_2   24
     #define MK_C_INTERVAL_2 16
 
     // Constant speed wheel (scroll) movements.
